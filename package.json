@@ -1,6 +1,6 @@
 {
   "name": "@eebyjo/egg-queue",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "eggPlugin": {
     "name": "queue"
