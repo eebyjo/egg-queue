@@ -30,6 +30,7 @@ exports.queue = {
 3. 恢復 queue
 4. 新增 job
 5. 移除 job
+6. 重試所有失敗 job
 
 ### 統一撰寫 process 的方式
 

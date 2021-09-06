@@ -1,7 +1,7 @@
 'use strict';
 
 const Service = require('egg').Service;
-const compact = require('lodash').compact;
+const _ = require('lodash');
 
 class QueueService extends Service {
   /**
@@ -37,7 +37,7 @@ class QueueService extends Service {
    * @param  {object} option.options job options
    */
   async add(name, { jobName, data, options }) {
-    if (this.app[name]) await this.app[name].add(...compact([ jobName, data, options ]));
+    if (this.app[name]) await this.app[name].add(..._.compact([ jobName, data, options ]));
   }
 
   /**
@@ -49,6 +49,22 @@ class QueueService extends Service {
     if (this.app[name]) {
       const job = await this.app[name].getJob(id);
       await job.remove();
+    }
+  }
+
+  /**
+   * 重試所有失敗 queue
+   * @param  {string} name queue name
+   */
+  async retryAll(name) {
+    if (this.app[name]) {
+      const jobs = await this.app[name].getFailed();
+
+      const sortedJob = jobs.filter(job => !!job && !_.isEmpty(job.data)).sort((a, b) => a.id - b.id);
+
+      for (const job of sortedJob) {
+        await job.retry();
+      }
     }
   }
 }

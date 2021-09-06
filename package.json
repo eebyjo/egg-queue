@@ -1,40 +1,40 @@
 {
   "name": "@eebyjo/egg-queue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "eggPlugin": {
     "name": "queue"
   },
   "dependencies": {
-    "bull": "^3.22.4",
+    "bull": "^3.29.1",
+    "egg": "^2.30.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
+    "autod": "^3.1.1",
     "autod-egg": "^1.1.0",
     "babel-eslint": "^10.1.0",
-    "egg": "^2.16.0",
-    "egg-bin": "^4.11.0",
-    "egg-ci": "^1.11.0",
+    "egg": "^2.30.0",
+    "egg-bin": "^4.16.4",
+    "egg-ci": "^1.18.0",
     "egg-mock": "^3.21.0",
-    "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint": "^7.32.0",
+    "eslint-config-egg": "^9.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
     "lint": "eslint .",
-    "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
     "pkgfiles": "egg-bin pkgfiles",
     "autod": "autod"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "eebyjo"
+  "author": "eebyjo",
+  "files": [
+    "app",
+    "config",
+    "app.js",
+    "lib",
+    "index.d.ts"
+  ]
 }
